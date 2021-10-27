@@ -1,10 +1,8 @@
 import "./Header.css";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 function MovieHeader() {
-  const history = useHistory();
-
   return (
     <>
       <div className="topNavbar sticky-top">

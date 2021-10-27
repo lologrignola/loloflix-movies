@@ -12,21 +12,20 @@ function MoviesList({ title, rating, page, setPage }) {
     ? `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&sort_by=popularity.desc&query=${title}&vote_average.gte=${rating}&page=${page}`
     : `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=popularity.desc&vote_average.gte=${rating}&page=${page}`;
 
-  const fetchData = async () => {
-    const response = await axios({
-      method: "GET",
-      url: url,
-    });
-    if (page > 1) {
-      setFilteredMovies([...filteredMovies, ...response.data.results]);
-    } else {
-      setFilteredMovies(response.data.results);
-    }
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios({
+        method: "GET",
+        url: url,
+      });
+      if (page > 1) {
+        setFilteredMovies([...filteredMovies, ...response.data.results]);
+      } else {
+        setFilteredMovies(response.data.results);
+      }
+    };
     fetchData();
-  }, [title, page, rating]);
+  }, [title, page, rating, filteredMovies, url]);
   return (
     <InfiniteScroll
       dataLength={filteredMovies.length}
