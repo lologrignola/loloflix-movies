@@ -24,7 +24,7 @@ function Movie() {
     };
 
     fetchData();
-  }, [url]);
+  });
 
   return (
     <>

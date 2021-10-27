@@ -7,12 +7,12 @@ import InfiniteScroll from "react-infinite-scroll-component";
 function MoviesList({ title, rating, page, setPage }) {
   const [filteredMovies, setFilteredMovies] = useState([]);
 
-  const apiKey = "69cae2f888f4adf3360e460eb4dbf272";
-  const url = title
-    ? `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&sort_by=popularity.desc&query=${title}&vote_average.gte=${rating}&page=${page}`
-    : `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=popularity.desc&vote_average.gte=${rating}&page=${page}`;
-
   useEffect(() => {
+    const apiKey = "69cae2f888f4adf3360e460eb4dbf272";
+    const url = title
+      ? `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&sort_by=popularity.desc&query=${title}&vote_average.gte=${rating}&page=${page}`
+      : `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&sort_by=popularity.desc&vote_average.gte=${rating}&page=${page}`;
+
     const fetchData = async () => {
       const response = await axios({
         method: "GET",
@@ -25,7 +25,8 @@ function MoviesList({ title, rating, page, setPage }) {
       }
     };
     fetchData();
-  }, [title, page, rating, filteredMovies, url]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [title, page, rating]);
   return (
     <InfiniteScroll
       dataLength={filteredMovies.length}
