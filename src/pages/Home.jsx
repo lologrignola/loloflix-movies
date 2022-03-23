@@ -12,7 +12,7 @@ function Home() {
     <div>
       <Header title={title} setTitle={setTitle} setPage={setPage} />
       <div className="text-center my-3">
-        Filtrar por rating:
+        Rating filter:
         <Rating
           setPage={setPage}
           className="text-warning"

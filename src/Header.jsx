@@ -22,9 +22,9 @@ function Header({ title, setTitle, setPage }) {
               style={{ textDecoration: "none", color: "white" }}
               to="/about-us"
             >
-              <p className="ms-4 d-flex">Sobre Nosotros</p>
+              <p className="ms-4 d-flex">About Us</p>
             </Link>
-            <p className="ms-4">Contacto</p>
+            <p className="ms-4">Contact</p>
           </div>
           <div className="d-flex align-items-center">
             <input
